@@ -28,9 +28,10 @@
 
 
     // Can also be done using the .repeat function:
-    console.log('Pyramid created with .repeat function');
+    
 
-    let pyramidHeight = 5;
+    let pyramidHeight = parseInt(prompt('What do you want the height to be?'));
+    console.log('Pyramid created with .repeat function & user input');
       function pyramidTwo(){
           for (let i = 1; i<= pyramidHeight; i++){
               let space = ' '.repeat(pyramidHeight-i);
