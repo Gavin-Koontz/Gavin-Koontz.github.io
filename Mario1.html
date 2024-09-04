@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    console.log('Pyramid created with nested for loops');
+    let height = 5;
+    function pyramid() {
+      for (let i = 1; i <= height; i++) {
+        let str = '';
+
+        // Adds spaces before the bricks to create pyramid effect
+        for (let s = 0; s < height - i; s++) {
+          str += ' ';
+        }
+
+        // Add the bricks to pyramid
+        for (let b = 0; b < i; b++) {
+          str += '#';
+        }
+
+        // Add the extra '#' for the second column to give the mario vibe
+        str += '#';
+        console.log(str);
+      }
+    }
+    pyramid();
+
+
+    // Can also be done using the .repeat function:
+    console.log('Pyramid created with .repeat function');
+
+    let pyramidHeight = 5;
+      function pyramidTwo(){
+          for (let i = 1; i<= pyramidHeight; i++){
+              let space = ' '.repeat(pyramidHeight-i);
+              let bricks = '#'.repeat(i);
+              console.log(space + bricks + '#')
+}
+}
+pyramidTwo();
+  </script>
+</head>
+
+<body>
+  <h1>Mario 1</h1>
+  <p>
+    Want to see a beautiful pyramid?
+    Take a look at the Console.
+  </p>
+  <p><code>PROTIP #1:Repl.it shows the console by default.</code></p>
+  <p><code>PROTIP #2:You can open up the developer tools in Chrome by pressing f12!</code></p>
+
+  
+</body>
+
+</html>
