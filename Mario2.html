@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #pyramid {
+            font-family: "Courier New", monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mario 2</h1>
+    <h3>Behold this wonderful pyramid:</h3>
+
+    <div id="pyramid"></div>
+
+    <script>
+        let height = parseInt(prompt('What do you want the height of your pyramid?'));
+
+        function pyramid() {
+            const pyramidDiv = document.getElementById("pyramid");
+            
+            for (let i = 1; i <= height; i++) {
+                let str = '';
+
+                // Adds spaces before the bricks to create pyramid effect
+                for (let s = 0; s < height - i; s++) {
+                    str += '.';
+                }
+
+                // Add the bricks to pyramid
+                for (let b = 0; b < i; b++) {
+                    str += '#';
+                }
+
+                // Add the extra '#' for the second column to give the Mario vibe
+                str += '#';
+
+                // Create a new paragraph element
+                let rowStr = document.createElement('p');
+                
+                // Set the content of the paragraph element
+                rowStr.textContent = str;
+
+                // Append the new paragraph to the #pyramid div
+                pyramidDiv.appendChild(rowStr);
+            }
+        }
+
+        pyramid();
+    </script>
+</body>
+
+</html>
