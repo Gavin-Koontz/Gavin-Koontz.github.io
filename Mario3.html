@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #pyramid {
+            line-height: 0;
+            font-size: 30px;
+        }
+
+        body {
+            font-family: "Courier New", monospace;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mario 3</h1>
+
+    <br>
+
+    <p>When you say</p>
+
+    <p><strong>Draw a pyramid</strong></p>
+
+    <p>I say:</p>
+
+    <br>
+
+    <label>How high?</label>
+
+    <input type="number" id="height" />
+
+    <br><br>
+
+    <button id="myBtn">Draw a pyramid</button>
+
+    <br><br>
+
+    <div id="pyramid"></div>
+
+    <script>
+        const submit = document.getElementById("myBtn");
+        submit.addEventListener("click", determineHeightAndThenDrawPyramid);
+
+        function determineHeightAndThenDrawPyramid() {
+            let height = document.getElementById("height").value;
+            const pyramidDiv = document.getElementById("pyramid");
+            pyramidDiv.innerHTML = '';
+
+            for (let i = 1; i <= height; i++) {
+                let str = '';
+                for (let s = 0; s < height - i; s++) {
+                    str += '.';
+                }
+                for (let b = 0; b < i; b++) {
+                    str += '#';
+                }
+                str += '#';
+                let rowStr = document.createElement('p');
+                rowStr.textContent = str;
+                pyramidDiv.appendChild(rowStr);
+            }
+        }
+    </script>
+</body>
+
+</html>
