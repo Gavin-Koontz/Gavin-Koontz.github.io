@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT3-FILTERS</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        div {
+            background-color: #ccc;
+            padding: 5vw;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            line-height: double;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- Display for rockets array -->
+        <h2>Rockets</h2>
+        <p id="rocketsList"></p>
+        <hr>
+        <!-- Display for rockets 18+ array -->
+        <h2>Rockets 18+</h2>
+        <p id="rocketsList18"></p>
+    </div>
+    <script>
+        // Variables for innerHTML:
+        let printList = document.getElementById("rocketsList");
+        let printList18 = document.getElementById("rocketsList18");
+        // Variables for arrays:
+        let agelist = [];
+        var rockets = [
+            { name: 'Sally', age: 32 },
+            { name: 'Bob', age: 23 },
+            { name: 'Jim', age: 16 },
+            { name: 'Scott Rhine', age: 7 },
+            { name: 'Angie Davison', age: 4 },
+            { name: 'James Munger', age: 3 }
+        ];
+        // Filter rockets to find 18+ year olds:
+        let filterrockets = rockets.filter(function (rocket) {
+            return rocket.age >= 18;
+        });
+        // Push 18+ year olds into agelist variable:
+        for (var i = 0; i < filterrockets.length; i++) {
+            agelist.push({ name: filterrockets[i].name, age: filterrockets[i].age });
+        }
+        // For each rocket object inner to DOM
+        rockets.forEach(function (rocket) {
+            printList.innerHTML += 'Name: ' + rocket.name + ', Age: ' + rocket.age + '<br>';
+        });
+        // For each 18+ year old in agelist variable inner to DOM
+        agelist.forEach(function (rocket) {
+            printList18.innerHTML += 'Name: ' + rocket.name + ', Age: ' + rocket.age + '<br>';
+        });
+    </script>
+</body>
+
+</html>
