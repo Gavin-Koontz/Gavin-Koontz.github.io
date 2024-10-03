@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 3 Reduce</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        div {
+            background-color: #ccc;
+            padding: 5vw;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            line-height: double;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- Display for rockets array -->
+        <h2>Array</h2>
+        <p id="array"></p>
+        <hr>
+        <!-- Display for rockets launch average  -->
+        <h2>Average</h2>
+        <p id="average"></p>
+    </div>
+
+    <script>
+        // Variables for innerHTML:
+        let printArray = document.getElementById("array");
+        let printAverage = document.getElementById("average");
+
+        var rockets = [
+            { country: 'Russia', launches: 32 },
+            { country: 'US', launches: 23 },
+            { country: 'China', launches: 16 },
+            { country: 'Europe(ESA)', launches: 7 },
+            { country: 'India', launches: 4 },
+            { country: 'Japan', launches: 3 }
+        ];
+
+        rockets.forEach(function(rocket) {
+            printArray.innerHTML += `${rocket.country}: ${rocket.launches} launches<br>`;
+        });
+
+        let sum = rockets.reduce(function(total, rocket) {
+            return total + rocket.launches; 
+        }, 0);
+
+        let average = Math.floor(sum / rockets.length);
+
+        printAverage.innerHTML = `Average launches: ${average}`;
+    </script>
+</body>
+
+</html>
