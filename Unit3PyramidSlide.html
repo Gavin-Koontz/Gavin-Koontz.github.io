@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .flexContainer {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            background-color: lightgrey;
+            height: 150vh;
+            text-align: center;
+            font-family: cursive;
+            min-width: 75vw;
+        }
+
+        .mainContainer {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid palevioletred;
+            min-height: 50vh;
+            min-width: 50%;
+
+        }
+
+        .title {
+            text-align: center;
+            background-color: palevioletred;
+            color: whitesmoke;
+            width: 75%;
+        }
+
+        .input {
+            padding: 1vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            background-color: Grey;
+            color: black;
+
+        }
+
+        #pyramidDisplay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: lightgrey;
+        }
+
+        #pyramid p {
+            text-align: right;
+            color: palevioletred;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flexContainer">
+
+        <div class="title">
+            <h1>Pyramid Slider</h1>
+        </div>
+        <div class="mainContainer">
+            <div style="width: 100%;">
+                <div class="input">
+                    <p>Brick Symbol:&nbsp;&nbsp;&nbsp;</p>
+                    <select id="mySelect">
+                        <option value="X">X</option>
+                        <option value="#">#</option>
+                        <option value="@">@</option>
+                        <option value="$">$</option>
+                    </select>&nbsp;&nbsp;&nbsp;
+                    <p>How High?&nbsp;&nbsp;&nbsp;</p>
+                    <input type="range" id="mySlider" min="1" max="20" value="1">
+                    <p id="size"></p>
+
+                </div>
+
+                <div id="pyramidDisplay">
+                    <div id="pyramid"></div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let sizeDisplay = document.getElementById("size");
+            let selectElement = document.getElementById("mySelect");
+            let brickVar = selectElement.value;
+            let slider = document.getElementById("mySlider");
+            let height = slider.value;
+            sizeDisplay.innerHTML = slider.value;
+            selectElement.addEventListener("change", function () {
+                brickVar = selectElement.value;
+                determineHeightAndThenDrawPyramid();
+
+            });
+            slider.addEventListener("change", function () {
+                height = slider.value;
+                sizeDisplay.innerHTML = slider.value;
+                determineHeightAndThenDrawPyramid();
+            });
+
+            function determineHeightAndThenDrawPyramid() {
+                const pyramidDiv = document.getElementById("pyramid");
+                pyramidDiv.innerHTML = '';
+
+                for (let i = 1; i <= height; i++) {
+                    let str = '';
+                    for (let s = 0; s < height - i; s++) {
+                        str += '\u00A0';
+                    }
+                    for (let b = 0; b < i; b++) {
+                        str += brickVar + '\u00A0';
+                    }
+                    str += brickVar;
+                    let rowStr = document.createElement('p');
+                    rowStr.textContent = str;
+                    pyramidDiv.appendChild(rowStr);
+                }
+            }
+            determineHeightAndThenDrawPyramid();
+        </script>
+</body>
+
+</html>
