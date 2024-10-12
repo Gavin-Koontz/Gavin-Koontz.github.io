@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3 Maps</title>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: grey;
+
+        }
+
+        .content {
+            padding: 5vw;
+            background-color: lightgrey;
+            border-radius: 5px;
+            border: 1px solid black;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+        } 
+        .output {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1> capitalize names!</h1>
+        <div class="content">
+            <div class="input">
+                <input type="text" id="input"><button id="submit">Submit</button><button id="reset">Reset</button>
+            </div>
+            <div class="output">
+                <p>
+                <ul id="output">
+                </ul>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        // Gavin Koontz
+        // 10/11/2024
+        // UNIT 3 Maps
+        // Project Description:
+        // Write a program that takes a single name at a time as user input and stores it in an array.
+        // Using a map go through the array and return an array with each word capitalized.
+        // Print out the original array and resulting array.
+
+        // Variable:
+        let userArray = [];
+        let adjustedArray = [];
+        let output = document.getElementById("output");
+        let input = document.getElementById("input");
+        let submit = document.getElementById("submit");
+        let reset = document.getElementById("reset");
+
+        // Function:
+
+        function capitalizeWords(words) {
+            return words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+        }
+
+        // Event Listener:
+
+        submit.addEventListener("click", function () {
+            if (input.value == "") {
+                alert("Please enter a name");
+                return;
+            }
+            userArray.push(input.value);
+            adjustedArray = capitalizeWords(userArray);
+            output.innerHTML = adjustedArray.map(word => `<li>${word}</li>`).join('');
+            input.value = "";
+        });
+        reset.addEventListener("click", function (){
+            userArray = [];
+            adjustedArray = [];
+            output.innerHTML = "";
+        })
+    </script>
+</body>
+
+</html>
